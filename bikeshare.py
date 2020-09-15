@@ -20,16 +20,15 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    print('Would you like to see the data for Chicago, New York City or Washington?')
 
     city = ''
     while city not in CITY_DATA:
-        city = input().lower()
+        city = input('Would you like to see the data for Chicago, New York City or Washington? ').lower()
         if city in CITY_DATA:
-            print('Would you like to see the data by which month? January, February, March, April, May, June or all?')
+            continue
         else:
-            print('You have input an invalid input. Please try again.')    
-        
+            print('You have input an invalid input. Please try again.')
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     month = ''
     while month not in MONTHS:
@@ -38,7 +37,7 @@ def get_filters():
             print('Would you like to see the data by which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all?')
         else:
             print('You have input an invalid input. Please try again.')
-            
+
     # TO DO: get user input for month (all, january, february, ... , june)
     day = ''
     while day not in WEEKDAY_NAME:
@@ -46,8 +45,8 @@ def get_filters():
         if day in WEEKDAY_NAME:
             print('Analysing data...')
         else:
-            print('You have input an invalid input. Please try again.')    
-    
+            print('You have input an invalid input. Please try again.')
+
     print('-'*40)
     return city, month, day
 
@@ -63,11 +62,11 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    
+
     df = pd.read_csv(CITY_DATA[city])
-    
+
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
@@ -158,7 +157,7 @@ def user_stats(df):
     try:
         user_types = df['User Type'].value_counts()
         print('Count of user types: {}.'.format(user_types))
-        
+
     except:
         print('There is no data for user types.')
 
@@ -166,7 +165,7 @@ def user_stats(df):
     try:
         gender = df['Gender'].value_counts()
         print('Counts of gender: {}.'.format(gender))
-    
+
     except:
         print('There is no data for gender.')
 
@@ -176,26 +175,26 @@ def user_stats(df):
         print('The earliest birth year: {}.'.format(i))
         print('The most recent birth year: {}.'.format(j))
         print('The most common birth year: {}.'.format(k))
-    
+
     except:
         print('There is no data for birth year.')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
-    
+
+
 def display_data(df):
-    
+
     view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no\n').lower()
     start_loc = 0
     while view_data == 'yes':
         print(df.iloc[start_loc:5 + start_loc])
-        start_loc += 5  
+        start_loc += 5
         view_display = input('Do you wish to continue?: ').lower()
         if view_display == 'no':
             break
-        
-                                                     
+
+
 def main():
     while True:
         city, month, day = get_filters()
@@ -205,11 +204,11 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-        display_data(df)                     
+        display_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
-            break                                 
+            break
 
 
 if __name__ == "__main__":
