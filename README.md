@@ -2,7 +2,7 @@
 10.09.2020
 
 ### Project Title
-Bike Share Data in Chicago, New York City and Washington.
+Explore US Bikeshare Data
 
 ### Description
 In this project, I used the data provided by Motivate to uncover bike share patterns, user types and birth year.
