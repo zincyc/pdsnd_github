@@ -32,9 +32,9 @@ def get_filters():
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     month = ''
     while month not in MONTHS:
-        month = input().lower()
+        month = input('Would you like to see the data by which month? January, February, March, April, May, June or all? ').lower()
         if month in MONTHS:
-            print('Would you like to see the data by which day? Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday or all?')
+            continue
         else:
             print('You have input an invalid input. Please try again.')
 
