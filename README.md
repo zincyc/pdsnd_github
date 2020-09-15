@@ -5,7 +5,7 @@
 Explore US Bikeshare Data
 
 ### Description
-In this project, I used the data provided by Motivate to uncover bike share patterns, user types and birth year.
+In this project, the user can interact with the program to uncover the usage patterns in 3 cities, which are Chicago, New York City and Washington.
 
 ### Files used
 chicago.csv
